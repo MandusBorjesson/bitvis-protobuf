@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package han_port;
+
+message HanPortSample {
+  optional uint64 timestamp_utc_meter_s = 1;
+  optional uint64 timestamp_utc_ntp_s = 28;
+
+  optional float energy_active_delivered_to_client_kwh = 2;
+  optional float energy_active_delivered_by_client_kwh = 3;
+
+  optional float energy_reactive_delivered_to_client_kvarh = 4;
+  optional float energy_reactive_delivered_by_client_kvarh = 5;
+
+  optional float power_active_delivered_to_client_kw = 6;
+  optional float power_active_delivered_by_client_kw = 7;
+
+  optional float power_reactive_delivered_to_client_kvar = 8;
+  optional float power_reactive_delivered_by_client_kvar = 9;
+
+  optional float power_active_l1_delivered_to_client_kw = 10;
+  optional float power_active_l1_delivered_by_client_kw = 11;
+  optional float power_active_l2_delivered_to_client_kw = 12;
+  optional float power_active_l2_delivered_by_client_kw = 13;
+  optional float power_active_l3_delivered_to_client_kw = 14;
+  optional float power_active_l3_delivered_by_client_kw = 15;
+
+  optional float power_reactive_l1_delivered_to_client_kvar = 16;
+  optional float power_reactive_l1_delivered_by_client_kvar = 17;
+  optional float power_reactive_l2_delivered_to_client_kvar = 18;
+  optional float power_reactive_l2_delivered_by_client_kvar = 19;
+  optional float power_reactive_l3_delivered_to_client_kvar = 20;
+  optional float power_reactive_l3_delivered_by_client_kvar = 21;
+
+  optional float phase_voltage_l1_v = 22;
+  optional float phase_voltage_l2_v = 23;
+  optional float phase_voltage_l3_v = 24;
+
+  optional float phase_current_l1_a = 25;
+  optional float phase_current_l2_a = 26;
+  optional float phase_current_l3_a = 27;
+}

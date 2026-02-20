@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package diagnostic;
+
+import "device_info.proto";
+
+option java_multiple_files = true;
+option java_package = "io.bitvis.power.interfaces.powerhub.diagnostic.protobuf";
+
+enum EventType {
+  EVENT_TYPE_UNSPECIFIED = 0;
+  EVENT_TYPE_TIMER = 1;
+  EVENT_TYPE_PROVISIONING_REQUESTED = 2;
+  EVENT_TYPE_MQTT_CONNECTED = 3;
+  EVENT_TYPE_REBOOT_REQUESTED = 4;
+  EVENT_TYPE_BOOT_UNKNOWN = 5;
+  EVENT_TYPE_BOOT_SOFTWARE = 6;
+  EVENT_TYPE_BOOT_POWER_ON = 7;
+  EVENT_TYPE_BOOT_WATCHDOG = 8;
+}
+
+message Counters {
+  uint32 hawkbit_status_connection_error = 1;
+  uint32 hawkbit_status_unconfirmed_image = 2 [ deprecated = true ];
+  uint32 hawkbit_status_metadata_error = 3 [ deprecated = true ];
+  uint32 hawkbit_status_download_error = 4;
+  uint32 hawkbit_status_already_updated = 5 [ deprecated = true ];
+  uint32 hawkbit_status_update_downloaded = 6;
+  uint32 hawkbit_status_no_update = 7;
+  uint32 hawkbit_status_cancel_update = 8 [ deprecated = true ];
+  uint32 hawkbit_status_probe_in_progress = 9 [ deprecated = true ];
+
+  uint32 timeout_internet_unreachable = 10;
+  uint32 timeout_hawkbit_connection = 11;
+
+  uint32 han_msg_successfully_parsed = 12;
+  uint32 han_msg_buffer_overflow = 13;
+}
+
+message Diagnostic {
+  EventType type = 1;
+  uint64 uptime_s = 2;
+  int32 wifi_rssi_dbm = 3;
+  device_info.DeviceInfo device_info = 4;
+  Counters counters = 5;
+}

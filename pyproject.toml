@@ -1,0 +1,40 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel", "grpcio-tools>=1.64.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bitvis-protobuf"
+version = "0.1.0"
+description = "Protobuf definitions for Bitvis Power Hub"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "Apache-2.0"}
+authors = [
+    {name = "Mandus Borjesson", email = "mandus@example.com"},
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+    "protobuf>=4.25.0,<6.0.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/MandusBorjesson/bitvis-protobuf"
+Repository = "https://github.com/MandusBorjesson/bitvis-protobuf"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["bitvis_protobuf*"]
+
+[tool.setuptools.package-data]
+bitvis_protobuf = ["py.typed", "proto/*.proto"]

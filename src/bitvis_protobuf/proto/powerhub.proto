@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+import "han_port.proto";
+import "device_info.proto";
+
+package powerhub;
+
+enum EventType {
+  EVENT_TYPE_UNSPECIFIED = 0;
+  EVENT_TYPE_TIMER = 1;
+  EVENT_TYPE_PROVISIONING_REQUESTED = 2;
+  EVENT_TYPE_MQTT_CONNECTED = 3;
+  EVENT_TYPE_REBOOT_REQUESTED = 4;
+  EVENT_TYPE_BOOT_UNKNOWN = 5;
+  EVENT_TYPE_BOOT_SOFTWARE = 6;
+  EVENT_TYPE_BOOT_POWER_ON = 7;
+  EVENT_TYPE_BOOT_WATCHDOG = 8;
+}
+
+message Diagnostic {
+  EventType type = 1;
+  uint64 uptime_s = 2;
+  int32 wifi_rssi_dbm = 3;
+  device_info.DeviceInfo device_info = 4;
+  uint32 han_msg_successfully_parsed = 5;
+  uint32 han_msg_buffer_overflow = 6;
+}
+
+message Payload {
+    oneof payload {
+        han_port.HanPortSample sample = 1;
+        Diagnostic diagnostic = 2;
+    }
+}

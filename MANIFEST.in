@@ -1,0 +1,14 @@
+# MANIFEST.in - Include additional files in the package
+
+include README.md
+include LICENSE
+include pyproject.toml
+
+# Include protobuf source files
+recursive-include src/bitvis_protobuf/proto *.proto
+
+# Include type stubs
+recursive-include src/bitvis_protobuf *.pyi
+
+# Include py.typed marker
+include src/bitvis_protobuf/py.typed

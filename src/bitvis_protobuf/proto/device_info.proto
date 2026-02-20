@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package device_info;
+
+option java_multiple_files = true;
+option java_package = "io.bitvis.power.interfaces.powerhub.deviceinfo.protobuf";
+
+message DeviceInfo {
+  bytes mac_address = 1;
+  string model_name = 2;
+  string sw_version = 3;
+  uint32 hw_revision = 4;
+}
